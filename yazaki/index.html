@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hema Gogineni — Specialist, Supplier Development</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0d2240;
+    --blue: #1a4a7a;
+    --accent: #2E75B6;
+    --gold: #c8922a;
+    --light: #f4f7fb;
+    --muted: #6b7a8d;
+    --border: #dce4ef;
+    --white: #ffffff;
+    --text: #1a2535;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--light);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--navy);
+    padding: 64px 48px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    border: 60px solid rgba(46,117,182,0.15);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: 60px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    border: 40px solid rgba(200,146,42,0.12);
+  }
+  .hero-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-tag {
+    display: inline-block;
+    background: rgba(46,117,182,0.25);
+    color: #90b8e0;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 52px;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+  .hero-role {
+    font-size: 18px;
+    color: #90b8e0;
+    font-weight: 300;
+    margin-bottom: 28px;
+    font-style: italic;
+  }
+  .hero-contact {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .hero-contact a, .hero-contact span {
+    color: #b8cfe6;
+    font-size: 13px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .hero-contact a:hover { color: #ffffff; }
+  .contact-dot {
+    width: 5px; height: 5px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .download-btn {
+    position: absolute;
+    top: 0; right: 0;
+    background: var(--gold);
+    color: var(--navy);
+    padding: 10px 20px;
+    border-radius: 0 0 0 12px;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    letter-spacing: 0.5px;
+  }
+  .download-btn:hover { background: #e0a535; }
+
+  /* NAV TABS */
+  .nav-tabs {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 48px;
+    overflow-x: auto;
+  }
+  .tab-btn {
+    padding: 16px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--muted);
+    cursor: pointer;
+    border: none;
+    background: none;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .tab-btn:hover { color: var(--accent); }
+  .tab-btn.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  .nav-wrapper {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  /* MAIN LAYOUT */
+  .main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 48px;
+  }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* SECTION HEADER */
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: var(--navy);
+    margin-bottom: 24px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title .icon {
+    width: 28px; height: 28px;
+    background: var(--accent);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  /* SUMMARY */
+  .summary-box {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 12px 12px 0;
+    padding: 24px 28px;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: 32px;
+  }
+
+  /* COMPETENCY GRID */
+  .comp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .comp-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .comp-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(13,34,64,0.08);
+  }
+  .comp-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .comp-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .tag {
+    background: var(--light);
+    color: var(--text);
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+  }
+  .tag.ai {
+    background: #fff8ec;
+    border-color: #e8c97a;
+    color: #7a5a10;
+  }
+
+  /* EXPERIENCE */
+  .job-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 24px;
+  }
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .job-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    color: var(--navy);
+  }
+  .job-dates {
+    font-size: 12px;
+    background: var(--light);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 4px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .job-company {
+    font-size: 14px;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+  .subsection {
+    margin-bottom: 16px;
+  }
+  .subsection-title {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #f0e6d0;
+  }
+  .bullet-list { list-style: none; padding: 0; }
+  .bullet-list li {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text);
+    padding: 3px 0 3px 18px;
+    position: relative;
+  }
+  .bullet-list li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 12px;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  /* SKILLS TAB */
+  .skills-section { margin-bottom: 36px; }
+  .skill-group-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .skill-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .skill-name {
+    font-size: 13px;
+    color: var(--text);
+    min-width: 160px;
+  }
+  .skill-bar-bg {
+    flex: 1;
+    height: 6px;
+    background: var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .skill-bar-fill {
+    height: 100%;
+    border-radius: 10px;
+    background: var(--accent);
+    width: 0;
+    transition: width 1s ease;
+  }
+  .skill-bar-fill.gold { background: var(--gold); }
+  .skill-pct {
+    font-size: 12px;
+    color: var(--muted);
+    min-width: 32px;
+    text-align: right;
+  }
+
+  /* AI Section */
+  .ai-highlight {
+    background: linear-gradient(135deg, #fff8ec 0%, #f4f7fb 100%);
+    border: 1px solid #e8c97a;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+  .ai-highlight-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    color: var(--navy);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .ai-badge {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    background: var(--gold);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    text-transform: uppercase;
+  }
+  .ai-highlight p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 16px;
+  }
+  .ai-tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+  }
+  .ai-tool-card {
+    background: white;
+    border: 1px solid #e8c97a;
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .ai-tool-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .ai-tool-use {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* EDUCATION TAB */
+  .edu-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 16px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .edu-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .edu-title {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .edu-sub {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  /* ACHIEVEMENTS */
+  .achieve-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .achieve-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    border-top: 3px solid var(--accent);
+  }
+  .achieve-card.gold-top { border-top-color: var(--gold); }
+  .achieve-metric {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .achieve-metric.gold { color: var(--gold); }
+  .achieve-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* KLA FIT */
+  .fit-table { width: 100%; border-collapse: collapse; }
+  .fit-table th {
+    text-align: left;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 10px 16px;
+    background: var(--light);
+    border-bottom: 1px solid var(--border);
+  }
+  .fit-table td {
+    padding: 14px 16px;
+    font-size: 13px;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.6;
+  }
+  .fit-table tr:last-child td { border-bottom: none; }
+  .fit-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 10px;
+  }
+  .fit-strong { background: #e8f5e9; color: #2e7d32; }
+  .fit-good { background: #e3f2fd; color: #1565c0; }
+  .fit-new { background: #fff8e1; color: #f57f17; }
+  .fit-table-wrap {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 680px) {
+    .hero { padding: 48px 24px 36px; }
+    .hero h1 { font-size: 36px; }
+    .main { padding: 28px 24px; }
+    .comp-grid { grid-template-columns: 1fr; }
+    .achieve-grid { grid-template-columns: 1fr; }
+    .nav-tabs { padding: 0 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <a class="download-btn" onclick="window.print()">Download PDF</a>
+    <div class="hero-tag">Open to Opportunities</div>
+    <h1>Hema Gogineni</h1>
+    <div class="hero-role">Targeting: Specialist, Supplier Development — Yazaki</div>
+    <div class="hero-contact">
+      <span><span class="contact-dot"></span> 248-832-6484</span>
+      <a href="mailto:Gogineni.hema@outlook.com"><span class="contact-dot"></span> Gogineni.hema@outlook.com</a>
+      <span><span class="contact-dot"></span> Canton, MI</span>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="nav-wrapper">
+  <div class="nav-tabs" style="max-width:900px;margin:0 auto;padding:0 48px;">
+    <button class="tab-btn active" onclick="showTab('overview', this)">Overview</button>
+    <button class="tab-btn" onclick="showTab('experience', this)">Experience</button>
+    <button class="tab-btn" onclick="showTab('skills', this)">Skills &amp; AI</button>
+    <button class="tab-btn" onclick="showTab('education', this)">Education</button>
+    <button class="tab-btn" onclick="showTab('klafit', this)">Yazaki Fit</button>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- OVERVIEW TAB -->
+  <div class="tab-content active" id="tab-overview">
+    <div class="section-title"><div class="icon">✦</div> Professional Summary</div>
+    <div class="summary-box">
+      Purchasing professional with 4+ years of experience supporting supplier data management, pricing accuracy, and PO processing within SAP-based procurement environments. Skilled in supplier registration and documentation (including NDAs and compliance records), invoice discrepancy resolution and continuous improvement of supplier metrics and process documentation. Experienced supporting cross-functional requests from internal business units and driving data accuracy across ERP and reporting systems. Strong Microsoft Office and SAP proficiency, with a collaborative, detail-oriented approach well suited to a fast-paced supplier development function.
+    </div>
+
+    <div class="section-title"><div class="icon">⊞</div> Core Competencies</div>
+    <div class="comp-grid">
+      <div class="comp-card">
+        <div class="comp-label">Supplier Data &amp; Documentation</div>
+        <div class="comp-tags">
+          <span class="tag">Supplier registration</span>
+          <span class="tag">NDA &amp; compliance tracking</span>
+          <span class="tag">SharePoint record mgmt</span>
+          <span class="tag">Purchase Info Records</span>
+        </div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-label">Pricing &amp; PO Support</div>
+        <div class="comp-tags">
+          <span class="tag">SAP PO processing</span>
+          <span class="tag">Pricing updates</span>
+          <span class="tag">RFQ support</span>
+          <span class="tag">Cost/spend tracking</span>
+        </div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-label">AP Support &amp; Compliance</div>
+        <div class="comp-tags">
+          <span class="tag">Invoice discrepancy resolution</span>
+          <span class="tag">3-way match</span>
+          <span class="tag">Vendor issue memos</span>
+          <span class="tag">Audit readiness</span>
+        </div>
+      </div>
+      <div class="comp-card">
+        <div class="comp-label">Technology &amp; AI</div>
+        <div class="comp-tags">
+          <span class="tag">SAP MM</span>
+          <span class="tag">Ariba</span>
+          <span class="tag">SharePoint</span>
+          <span class="tag">Power BI</span>
+          <span class="tag ai">Microsoft Copilot</span>
+          <span class="tag ai">ChatGPT / Claude</span>
+          <span class="tag ai">Prompt Engineering</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title"><div class="icon">★</div> Key Achievements</div>
+    <div class="achieve-grid">
+      <div class="achieve-card">
+        <div class="achieve-metric">~30%</div>
+        <div class="achieve-desc">Improvement in supplier Ariba compliance through targeted portal training sessions</div>
+      </div>
+      <div class="achieve-card gold-top">
+        <div class="achieve-metric gold">100%</div>
+        <div class="achieve-desc">Audit-readiness maintained through 3-way match controls and complete PO/pricing documentation trails</div>
+      </div>
+      <div class="achieve-card gold-top">
+        <div class="achieve-metric gold">↓ Errors</div>
+        <div class="achieve-desc">Reduced supplier onboarding &amp; NDA documentation errors via standardized validation checklists</div>
+      </div>
+      <div class="achieve-card">
+        <div class="achieve-metric">Faster</div>
+        <div class="achieve-desc">Invoice discrepancy resolution through standardized billing templates and AP issue memos</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXPERIENCE TAB -->
+  <div class="tab-content" id="tab-experience">
+    <div class="section-title"><div class="icon">◈</div> Professional Experience</div>
+
+    <div class="job-card">
+      <div class="job-header">
+        <div class="job-title">Procurement Analyst</div>
+        <span class="job-dates">April 2022 – Present</span>
+      </div>
+      <div class="job-company">Trendset Solutions</div>
+
+      <div class="subsection">
+        <div class="subsection-title">Supplier Data, Registration &amp; Documentation</div>
+        <ul class="bullet-list">
+          <li>Supported supplier onboarding and registration end-to-end, ensuring legal documents, non-disclosure agreements, business registrations, tax filings, and banking details were completed and properly filed in SharePoint.</li>
+          <li>Maintained source lists and Purchase Info Records in SAP, keeping supplier and pricing data current and audit-ready.</li>
+          <li>Facilitated urgent internal requests for component and vendor information from cross-functional business units, responding accurately under time pressure.</li>
+          <li>Documented end-to-end procurement procedures for PO processing, vendor validation, and invoice reconciliation, creating clear reference guidelines adopted across teams.</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <div class="subsection-title">Pricing, PO Processing &amp; RFQ Support</div>
+        <ul class="bullet-list">
+          <li>Processed purchase orders in SAP MM, supporting pricing accuracy and monitoring PO status through SAP reports (ME2N, ME2L, ME2M).</li>
+          <li>Supported and monitored eRFQ-style sourcing events, including RFI/RFQ creation and publication in Ariba, and structured quote comparisons for new and existing components.</li>
+          <li>Performed PO updates including substitutions, pricing changes, and vendor modifications to keep procurement data accurate.</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <div class="subsection-title">AP Support, Compliance &amp; Continuous Improvement</div>
+        <ul class="bullet-list">
+          <li>Supported Accounts Payable by resolving invoice discrepancies with suppliers, documenting resolution memos and saving records in SharePoint.</li>
+          <li>Ensured 3-way match compliance (PO, GR, Invoice) as a key internal control, reducing overpayment risk and supporting audit requirements.</li>
+          <li>Participated in continuous improvement of supplier metrics, identifying recurring gaps in onboarding and delivery documentation and developing standardized validation checklists that reduced errors.</li>
+          <li>Trained suppliers on portal usage including PO viewing, order confirmations, and ship-notice creation, improving supplier compliance and cutting manual follow-up by ~30%.</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <div class="subsection-title">Stakeholder Collaboration</div>
+        <ul class="bullet-list">
+          <li>Partnered with Finance, IT, Logistics, and Warehouse teams to align on purchasing needs, PO/GR/IR reconciliation, and inventory levels.</li>
+          <li>Coordinated with Project Managers on procurement timelines, ensuring alignment between purchasing activities and delivery schedules.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="job-card">
+      <div class="job-header">
+        <div class="job-title">Procurement Analyst</div>
+        <span class="job-dates">September 2019 – March 2020</span>
+      </div>
+      <div class="job-company">MSN Pharmaceuticals Inc. — Hyderabad, India</div>
+      <ul class="bullet-list">
+        <li>Managed purchase orders and maintained source lists and Purchase Info Records in SAP MM, including substitutions, pricing changes, and vendor modifications.</li>
+        <li>Prepared purchasing and pricing reports in Excel, supporting accurate vendor and cost data and resolving system issues with IT.</li>
+        <li>Collaborated with cross-functional teams to align on purchasing needs, inventory levels, and vendor compliance requirements.</li>
+      </ul>
+    </div>
+
+    <div class="job-card" style="opacity:0.75;">
+      <div class="job-header">
+        <div class="job-title">Front-End Web Developer <span style="font-size:12px;font-weight:400;color:var(--muted);font-family:'DM Sans',sans-serif;">(Prior Career)</span></div>
+        <span class="job-dates">2016 – 2018</span>
+      </div>
+      <div class="job-company">Green Boundaries — Hyderabad, India</div>
+      <ul class="bullet-list">
+        <li>Built responsive websites using HTML, CSS, and JavaScript; integrated APIs and dynamic data into web pages.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SKILLS TAB -->
+  <div class="tab-content" id="tab-skills">
+
+    <div class="ai-highlight">
+      <div class="ai-highlight-title">AI-Powered Procurement <span class="ai-badge">Modern Edge</span></div>
+      <p>Actively leverages AI tools to modernize supplier documentation, pricing reporting, and data cleanup work — bringing a forward-thinking approach to supplier development support.</p>
+      <div class="ai-tools-grid">
+        <div class="ai-tool-card">
+          <div class="ai-tool-name">Microsoft Copilot</div>
+          <div class="ai-tool-use">Procurement data analysis, report drafting, Excel automation</div>
+        </div>
+        <div class="ai-tool-card">
+          <div class="ai-tool-name">ChatGPT / Claude</div>
+          <div class="ai-tool-use">Policy drafting, document simplification, stakeholder communications</div>
+        </div>
+        <div class="ai-tool-card">
+          <div class="ai-tool-name">Prompt Engineering</div>
+          <div class="ai-tool-use">Workflow automation, structured outputs for procurement templates</div>
+        </div>
+        <div class="ai-tool-card">
+          <div class="ai-tool-name">Power BI / Tableau</div>
+          <div class="ai-tool-use">Spend visibility dashboards, compliance tracking, supplier KPIs</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title"><div class="icon">⊞</div> Technical Proficiency</div>
+
+    <div class="skills-section">
+      <div class="skill-group-label">Procurement Systems</div>
+      <div class="skill-row"><span class="skill-name">SAP MM</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="92"></div></div><span class="skill-pct">92%</span></div>
+      <div class="skill-row"><span class="skill-name">SAP Ariba</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="88"></div></div><span class="skill-pct">88%</span></div>
+      <div class="skill-row"><span class="skill-name">ServiceNow</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="70"></div></div><span class="skill-pct">70%</span></div>
+      <div class="skill-row"><span class="skill-name">SharePoint</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="75"></div></div><span class="skill-pct">75%</span></div>
+    </div>
+
+    <div class="skills-section">
+      <div class="skill-group-label">Data &amp; Analytics</div>
+      <div class="skill-row"><span class="skill-name">Microsoft Excel (Advanced)</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="90"></div></div><span class="skill-pct">90%</span></div>
+      <div class="skill-row"><span class="skill-name">Power BI</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="72"></div></div><span class="skill-pct">72%</span></div>
+      <div class="skill-row"><span class="skill-name">Tableau</span><div class="skill-bar-bg"><div class="skill-bar-fill" data-width="68"></div></div><span class="skill-pct">68%</span></div>
+    </div>
+
+    <div class="skills-section">
+      <div class="skill-group-label">AI Tools (Emerging)</div>
+      <div class="skill-row"><span class="skill-name">ChatGPT / Claude</span><div class="skill-bar-bg"><div class="skill-bar-fill gold" data-width="80"></div></div><span class="skill-pct">80%</span></div>
+      <div class="skill-row"><span class="skill-name">Microsoft Copilot</span><div class="skill-bar-bg"><div class="skill-bar-fill gold" data-width="72"></div></div><span class="skill-pct">72%</span></div>
+      <div class="skill-row"><span class="skill-name">Prompt Engineering</span><div class="skill-bar-bg"><div class="skill-bar-fill gold" data-width="65"></div></div><span class="skill-pct">65%</span></div>
+    </div>
+  </div>
+
+  <!-- EDUCATION TAB -->
+  <div class="tab-content" id="tab-education">
+    <div class="section-title"><div class="icon">◎</div> Education</div>
+
+    <div class="edu-card">
+      <div class="edu-icon">🎓</div>
+      <div>
+        <div class="edu-title">Bachelor of Science in Computer Science</div>
+        <div class="edu-sub">JNTU, Kakinada, Andhra Pradesh, India</div>
+      </div>
+    </div>
+
+    <div class="section-title" style="margin-top:32px;"><div class="icon">◈</div> Professional Development</div>
+
+    <div class="edu-card"><div class="edu-icon" style="font-size:16px;">📋</div><div><div class="edu-title">Fundamentals of Procurement and Supply Chain Management</div><div class="edu-sub">End-to-end procurement lifecycle, supplier relationships, cost optimization</div></div></div>
+    <div class="edu-card"><div class="edu-icon" style="font-size:16px;">🔍</div><div><div class="edu-title">Strategic Sourcing and Supplier Management</div><div class="edu-sub">RFI/RFQ processes, supplier evaluation, category management principles</div></div></div>
+    <div class="edu-card"><div class="edu-icon" style="font-size:16px;">📄</div><div><div class="edu-title">Purchase Order and Contract Management</div><div class="edu-sub">Contract lifecycle, PO compliance, outline agreements</div></div></div>
+    <div class="edu-card"><div class="edu-icon" style="font-size:16px;">⚙️</div><div><div class="edu-title">SAP MM (Materials Management) Training</div><div class="edu-sub">Core procurement modules, ME2N/ME2L/ME2M reports, source lists</div></div></div>
+    <div class="edu-card"><div class="edu-icon" style="font-size:16px;">📊</div><div><div class="edu-title">Advanced Microsoft Excel</div><div class="edu-sub">Pivot Tables, VLOOKUP, data analysis and reporting</div></div></div>
+    <div class="edu-card"><div class="edu-icon" style="font-size:16px;">🤖</div><div><div class="edu-title">Microsoft AI Fundamentals</div><div class="edu-sub">Core AI concepts, Microsoft AI tools, practical AI applications in business</div></div></div>
+  </div>
+
+  <!-- YAZAKI FIT TAB -->
+  <div class="tab-content" id="tab-klafit">
+    <div class="section-title"><div class="icon">✦</div> Yazaki Role Alignment</div>
+
+    <div class="fit-table-wrap">
+      <table class="fit-table">
+        <thead>
+          <tr>
+            <th>Yazaki Requirement</th>
+            <th>Hema's Experience</th>
+            <th>Match</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Supplier registration &amp; NDA/documentation filing</td>
+            <td>End-to-end supplier onboarding, NDA and compliance document tracking, SharePoint record management</td>
+            <td><span class="fit-badge fit-strong">Strong</span></td>
+          </tr>
+          <tr>
+            <td>Pricing updates &amp; SAP PO processing</td>
+            <td>4+ years processing POs and maintaining pricing/source data in SAP MM</td>
+            <td><span class="fit-badge fit-strong">Strong</span></td>
+          </tr>
+          <tr>
+            <td>eRFQ monitoring for new &amp; existing components</td>
+            <td>RFI/RFQ creation and publication in Ariba; structured quote comparisons</td>
+            <td><span class="fit-badge fit-good">Good</span></td>
+          </tr>
+          <tr>
+            <td>Accounts Payable support &amp; invoice discrepancies</td>
+            <td>Resolved invoice discrepancies with suppliers, documented resolution memos, 3-way match compliance</td>
+            <td><span class="fit-badge fit-strong">Strong</span></td>
+          </tr>
+          <tr>
+            <td>Continuous improvement of supplier metrics/KPIs</td>
+            <td>Developed standardized onboarding checklists; reduced errors and improved audit-readiness</td>
+            <td><span class="fit-badge fit-good">Good</span></td>
+          </tr>
+          <tr>
+            <td>SharePoint-based data management</td>
+            <td>Filed NDAs, compliance docs, and AP memos in SharePoint as part of daily workflow</td>
+            <td><span class="fit-badge fit-strong">Strong</span></td>
+          </tr>
+          <tr>
+            <td>Facilitating urgent cross-functional requests</td>
+            <td>Regularly responded to time-sensitive information requests from internal business units</td>
+            <td><span class="fit-badge fit-good">Good</span></td>
+          </tr>
+          <tr>
+            <td>Microsoft Office &amp; SAP proficiency</td>
+            <td>Advanced Excel, SAP MM, SAP Ariba — daily tools for 4+ years</td>
+            <td><span class="fit-badge fit-strong">Strong</span></td>
+          </tr>
+          <tr>
+            <td>Automotive industry experience</td>
+            <td>Manufacturing &amp; pharmaceutical procurement background; automotive exposure is new</td>
+            <td><span class="fit-badge fit-new">Growing</span></td>
+          </tr>
+          <tr>
+            <td>GPDB / PCN-SCN / CST tools specifically</td>
+            <td>No direct experience with these Yazaki-specific systems; strong transferable ERP/pricing-data foundation</td>
+            <td><span class="fit-badge fit-new">Growing</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="summary-box" style="border-left-color:var(--gold);">
+      <strong>Overall Assessment:</strong> Hema's supplier documentation, SAP PO processing, and AP-support experience directly maps to 8 of 10 Yazaki requirements. The two growth areas — automotive industry exposure and Yazaki-specific tools (GPDB, PCN/SCN, CST) — are typically picked up quickly given her existing SAP/Ariba fluency and comfort learning new systems.
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function showTab(name, btn) {
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    btn.classList.add('active');
+    if (name === 'skills') animateBars();
+  }
+
+  function animateBars() {
+    setTimeout(() => {
+      document.querySelectorAll('.skill-bar-fill').forEach(bar => {
+        bar.style.width = bar.getAttribute('data-width') + '%';
+      });
+    }, 100);
+  }
+
+  window.onload = function() {};
+</script>
+</body>
+</html>
